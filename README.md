@@ -1,38 +1,53 @@
-# sv
+# customneko
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+a Svelte port of [Neko](https://en.wikipedia.org/wiki/Neko_(software)) for use with custom spritesheets and custom behavior
 
-## Creating a project
+play with an example [here](https://spiritov.github.io/customneko/build/index) :)  
 
-If you're seeing this, you've probably already done this step. Congrats!
+![customneko](https://github.com/user-attachments/assets/75cc9689-864f-4c69-b91e-87951548ba1e)
 
-```sh
-# create a new project in the current directory
-npx sv create
+## Svelte usage
+```html
+<!-- +page.svelte -->
+<script>
+  import CustomNeko from '$lib/components/CustomNeko.svelte';
 
-# create a new project in my-app
-npx sv create my-app
+  // props..
+  // image_path: url or path to a spritesheet image, see below for the expected layout
+  // sprite_width, sprite_height: each spritesheet frame is expected to have the same width and height
+  // optional..
+  // update_ms: how fast sprite animations should cycle frames
+  // sleep time: how many total frames there should be in-between sleep frames
+  // move_speed: sprite move speed in pixels, every update_ms ms
+</script>
+
+<CustomNeko
+	image_path={'image_path_here'}
+	sprite_width={40}
+	sprite_height={40}
+/>
 ```
 
-## Developing
+### expected spritesheet layout..
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+<img width="360" height="360" alt="image" src="https://github.com/user-attachments/assets/7c4b0a30-1b53-4ab8-bbac-2578da13b79c" />
+
+> [!TIP]
+> reference the component's animation map to see how you can customize the layout of the spritesheet. it's very easy to modify as long as each sprite has the same grid size!
+
+## development
+
+to run locally..
 
 ```sh
+npm i
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
-
-To create a production version of your app:
+to build..
 
 ```sh
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+thanks to the [PMD Sprite Repository](https://sprites.pmdcollab.org/) for easily accessible spritesheets
