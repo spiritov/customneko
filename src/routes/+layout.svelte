@@ -1,6 +1,4 @@
-<script lang="ts">
-	import './layout.css';
-
+<script>
 	let { children } = $props();
 </script>
 

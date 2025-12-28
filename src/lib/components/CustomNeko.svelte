@@ -169,5 +169,10 @@
 		-1}px"
 	style:left="{spriteX}px"
 	style:top="{spriteY}px"
-	class="h-10 w-10 scale-200 bg-no-repeat fixed z-9999"
+	style:height="{sprite_height}px"
+	style:width="{sprite_width}px"
+	style:transform="scale(2, 2)"
+	style:background-repeat="no-repeat"
+	style:position="fixed"
+	style:z-index="9999"
 ></div>
