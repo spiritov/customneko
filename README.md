@@ -8,25 +8,25 @@ play with an example [here](https://spiritov.github.io/customneko) :)
 
 ## Svelte usage
 
+```sh
+npm i customneko
+```
+
 ```html
 <!-- +page.svelte -->
 <script>
-  import CustomNeko from '$lib/components/CustomNeko.svelte';
+	import { CustomNeko } from 'customneko';
 
-  // props..
-  // image_path: url or path to a spritesheet image, see below for the expected layout
-  // sprite_width, sprite_height: each spritesheet frame is expected to have the same width and height
-  // optional..
-  // update_ms: how fast sprite animations should cycle frames
-  // sleep time: how many total frames there should be in-between sleep frames
-  // move_speed: sprite move speed in pixels, every update_ms ms
+	// props..
+	// image_path: url or path to a spritesheet image, see below for the expected layout
+	// sprite_width, sprite_height: each spritesheet frame is expected to have the same width and height
+	// optional..
+	// update_ms: how fast sprite animations should cycle frames
+	// sleep time: how many total frames there should be in-between sleep frames
+	// move_speed: sprite move speed in pixels, every update_ms ms
 </script>
 
-<CustomNeko
-	image_path={'image_path_here'}
-	sprite_width={40}
-	sprite_height={40}
-/>
+<CustomNeko image_path="image_path_here" sprite_width="{40}" sprite_height="{40}" />
 ```
 
 ### expected spritesheet layout..

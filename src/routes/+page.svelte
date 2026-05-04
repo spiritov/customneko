@@ -1,9 +1,5 @@
 <script lang="ts">
-	import CustomNeko from '$lib/components/CustomNeko.svelte';
+	import CustomNeko from '$lib/CustomNeko.svelte';
 </script>
 
-<CustomNeko
-	image_path={'https://files.catbox.moe/0fqbi1.png'}
-	sprite_width={40}
-	sprite_height={40}
-/>
+<CustomNeko image_path="https://files.catbox.moe/0fqbi1.png" sprite_width={40} sprite_height={40} />
