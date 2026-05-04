@@ -1,12 +1,13 @@
 # customneko
 
-a Svelte port of [Neko](https://en.wikipedia.org/wiki/Neko_(software)) for use with custom spritesheets and custom behavior
+a Svelte port of [Neko](<https://en.wikipedia.org/wiki/Neko_(software)>) for use with custom spritesheets and custom behavior
 
-play with an example [here](https://spiritov.github.io/customneko/build/index) :)  
+play with an example [here](https://spiritov.github.io/customneko/) :)
 
 ![customneko](https://github.com/user-attachments/assets/75cc9689-864f-4c69-b91e-87951548ba1e)
 
 ## Svelte usage
+
 ```html
 <!-- +page.svelte -->
 <script>

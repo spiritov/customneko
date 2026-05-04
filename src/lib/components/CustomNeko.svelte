@@ -1,15 +1,5 @@
 <script lang="ts">
-	enum Animation {
-		N,
-		E,
-		S,
-		W,
-		NE,
-		SE,
-		SW,
-		NW,
-		Sleep
-	}
+	type Animation = 'N' | 'E' | 'S' | 'W' | 'NE' | 'SE' | 'SW' | 'NW' | 'Sleep';
 
 	type SpriteIndex = {
 		row: number;
@@ -40,15 +30,15 @@
 
 	// set: each row the spritesheet to an Animation's entry
 	const spriteIndexes = new Map<Animation, SpriteIndex>([
-		[Animation.Sleep, { row: 0, length: 2 }],
-		[Animation.S, { row: 1, length: 7 }],
-		[Animation.SE, { row: 2, length: 7 }],
-		[Animation.E, { row: 3, length: 7 }],
-		[Animation.NE, { row: 4, length: 7 }],
-		[Animation.N, { row: 5, length: 7 }],
-		[Animation.NW, { row: 6, length: 7 }],
-		[Animation.W, { row: 7, length: 7 }],
-		[Animation.SW, { row: 8, length: 7 }]
+		['Sleep', { row: 0, length: 2 }],
+		['S', { row: 1, length: 7 }],
+		['SE', { row: 2, length: 7 }],
+		['E', { row: 3, length: 7 }],
+		['NE', { row: 4, length: 7 }],
+		['N', { row: 5, length: 7 }],
+		['NW', { row: 6, length: 7 }],
+		['W', { row: 7, length: 7 }],
+		['SW', { row: 8, length: 7 }]
 	]);
 
 	const sprite_width_offset = $derived(sprite_width / 1.5);
@@ -72,8 +62,8 @@
 		row: 0,
 		frame: 0
 	});
-	let spriteX = $derived(sprite_width);
-	let spriteY = $derived(sprite_height);
+	let spriteX = $state(80);
+	let spriteY = $state(80);
 
 	function onWindowAnimationFrame(timestamp: number) {
 		if (timestamp - lastTimestamp > update_ms && allowUpdates) {
@@ -87,29 +77,29 @@
 		// NE, E, SE
 		if (x > 0.5) {
 			if (y > 0.5) {
-				spriteAnimation = spriteIndexes.get(Animation.SE) as SpriteIndex;
+				spriteAnimation = spriteIndexes.get('SE') as SpriteIndex;
 			} else if (y < -0.5) {
-				spriteAnimation = spriteIndexes.get(Animation.NE) as SpriteIndex;
+				spriteAnimation = spriteIndexes.get('NE') as SpriteIndex;
 			} else {
-				spriteAnimation = spriteIndexes.get(Animation.E) as SpriteIndex;
+				spriteAnimation = spriteIndexes.get('E') as SpriteIndex;
 			}
 		}
 		// NW, W, SW
 		else if (x < -0.5) {
 			if (y > 0.5) {
-				spriteAnimation = spriteIndexes.get(Animation.SW) as SpriteIndex;
+				spriteAnimation = spriteIndexes.get('SW') as SpriteIndex;
 			} else if (y < -0.5) {
-				spriteAnimation = spriteIndexes.get(Animation.NW) as SpriteIndex;
+				spriteAnimation = spriteIndexes.get('NW') as SpriteIndex;
 			} else {
-				spriteAnimation = spriteIndexes.get(Animation.W) as SpriteIndex;
+				spriteAnimation = spriteIndexes.get('W') as SpriteIndex;
 			}
 		}
 		// N, S
 		else {
 			if (y > 0) {
-				spriteAnimation = spriteIndexes.get(Animation.S) as SpriteIndex;
+				spriteAnimation = spriteIndexes.get('S') as SpriteIndex;
 			} else {
-				spriteAnimation = spriteIndexes.get(Animation.N) as SpriteIndex;
+				spriteAnimation = spriteIndexes.get('N') as SpriteIndex;
 			}
 		}
 	}
@@ -125,7 +115,7 @@
 
 		// sleep
 		if (distance < sprite_sleep_distance) {
-			spriteAnimation = spriteIndexes.get(Animation.Sleep) as SpriteIndex;
+			spriteAnimation = spriteIndexes.get('Sleep') as SpriteIndex;
 			sleepTimer = (sleepTimer + 1) % sleep_time;
 			spriteIndex.frame = sleepTimer < sleep_time / 2 ? 0 : 1;
 		}
@@ -175,4 +165,5 @@
 	style:background-repeat="no-repeat"
 	style:position="fixed"
 	style:z-index="9999"
+	style:pointer-events="none"
 ></div>
