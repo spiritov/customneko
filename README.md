@@ -45,10 +45,4 @@ npm i
 npm run dev
 ```
 
-to build..
-
-```sh
-npm run build
-```
-
 thanks to the [PMD Sprite Repository](https://sprites.pmdcollab.org/) for easily accessible spritesheets
